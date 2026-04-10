@@ -48,8 +48,8 @@ int main()
             }
         }
 
-        std::cout << "Programme termiee." << std::endl;
-        std::cout << "Appuyez sur Entrée pour fermer le programme." << std::endl;
+        std::cout << "Programme termiee.\n";
+        std::cout << "Appuyer sur la touche 'Entrer' pour fermer le programme.\n";
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cin.get();
     }
