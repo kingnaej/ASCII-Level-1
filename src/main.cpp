@@ -3,10 +3,12 @@
 #include <fstream>
 #include <filesystem>
 #include <unordered_map>
+#include <limits>
 
 int main()
 {
-    if (std::filesystem::path const dataPath = "../../data"; std::filesystem::exists(dataPath))
+    std::filesystem::path const dataPath = "../../data";
+    if (std::filesystem::exists(dataPath))
     {
         std::unordered_map<char, std::filesystem::path> asciiFile;
         asciiFile[' '] = "../../data/espace.txt";
@@ -29,18 +31,27 @@ int main()
         std::getline(std::cin, firstTest);
         std::cout << std::endl;
 
-        for (auto &content : firstTest) {
+        for (auto &content : firstTest)
+        {
             content = static_cast<char>(std::toupper(static_cast<unsigned char>(content)));
-            if (asciiFile.contains(content)) {
-                if (std::ifstream testFile = asciiFile.at(content); testFile.is_open()) {
+            if (asciiFile.contains(content))
+            {
+                if (std::ifstream testFile = asciiFile.at(content); testFile.is_open())
+                {
                     std::string line;
-                    while (std::getline(testFile, line)) {
+                    while (std::getline(testFile, line))
+                    {
                         std::cout << line << std::endl;
                     }
                     std::cout << std::endl;
                 }
             }
         }
+
+        std::cout << "Programme termiee." << std::endl;
+        std::cout << "Appuyez sur Entrée pour fermer le programme." << std::endl;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin.get();
     }
     else
     {
